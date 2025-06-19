@@ -1,0 +1,28 @@
+<form method='post'>
+{% csrf_token %}
+
+<p>{{user.username}}</p>
+
+<p>Name:</p>
+<input type='text' name='username'><br>
+<p>Email:</p>
+<input type='email' name='email'><br>
+<p>Password:</p>
+<input type='password' name='password'><br><br>
+<input type='submit'>
+
+{% if messages %}
+  {% for message in messages %}
+    <p style="
+       {% if message.tags == 'success' %}
+         color: green;
+       {% elif message.tags == 'error' %}
+         color: red;
+       {% endif %}
+    ">
+      {{ message }}
+    </p>
+  {% endfor %}
+{% endif %}
+
+<form>
